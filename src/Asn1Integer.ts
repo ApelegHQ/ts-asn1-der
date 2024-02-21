@@ -16,9 +16,56 @@
 import { ASN1_CLASS_UNIVERSAL_ } from './Asn1ClassType.js';
 import { Asn1Primitive } from './Asn1Primitive.js';
 
+const BigIntBitLen = (x: bigint) => {
+	let l = 1;
+	if (x < BigInt(0)) x = -x;
+	while ((x >>= BigInt(1)) != BigInt(0)) {
+		l++;
+	}
+	return l;
+};
+
+const numBitLen = (x: number) => {
+	let l = 1;
+	if (x < 0) x = -x;
+	while ((x >>= 1) != 0) {
+		l++;
+	}
+	return l;
+};
+
+function encode2sComplement(
+	n: number | bigint | AllowSharedBufferSource,
+): AllowSharedBufferSource {
+	if (typeof n === 'bigint') {
+		const negative = n < BigInt(0);
+		const size = Math.ceil(
+			BigIntBitLen(negative ? -n : n + BigInt(128)) / 8,
+		);
+		const bytes = new Uint8Array(size);
+		for (let i = size - 1; i >= 0; i--, n >> BigInt(8)) {
+			bytes[i] = Number(n & BigInt(0xff));
+		}
+
+		return bytes.buffer;
+	} else if (typeof n === 'number') {
+		const negative = n < 0;
+		const size = Math.ceil(numBitLen(negative ? -n : n + 128) / 8);
+		const bytes = new Uint8Array(size);
+		for (let i = size - 1; i >= 0; i--, n >>= 8) {
+			bytes[i] = n & 0xff;
+		}
+
+		return bytes.buffer;
+	} else {
+		// Assume it's already correctly encoded
+		return n;
+	}
+}
+
 export class Asn1Integer extends Asn1Primitive {
-	constructor(data: AllowSharedBufferSource) {
+	constructor(data: number | bigint | AllowSharedBufferSource) {
 		// TODO: Allow real numbers and encode them instead of using a buffer
-		super(ASN1_CLASS_UNIVERSAL_, 2, data);
+		super(ASN1_CLASS_UNIVERSAL_, 2, encode2sComplement(data));
 	}
 }

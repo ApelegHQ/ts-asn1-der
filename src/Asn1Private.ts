@@ -22,7 +22,7 @@ export class Asn1Private extends Asn1Base {
 	explicit_: boolean;
 
 	constructor(tagNumber: number, data?: IAsn1Data, explicit?: boolean) {
-		super(ASN1_CLASS_PRIVATE_, !!data?.primitive_, tagNumber);
+		super(ASN1_CLASS_PRIVATE_, !explicit && !!data?.primitive_, tagNumber);
 		this.data_ = data;
 		this.explicit_ = !!explicit;
 	}

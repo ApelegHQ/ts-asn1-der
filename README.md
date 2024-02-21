@@ -1,4 +1,4 @@
-🔒 **RFC 8188 Encrypted Content-Encoding for HTTP in TypeScript**
+🔒 **A collection of utility classes to encode ASN.1 data following DER rules**
 
  [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_ts-asn1-der&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_ts-asn1-der)
  [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_ts-asn1-der&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_ts-asn1-der)

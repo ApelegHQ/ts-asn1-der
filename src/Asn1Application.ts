@@ -22,7 +22,11 @@ export class Asn1Application extends Asn1Base {
 	explicit_: boolean;
 
 	constructor(tagNumber: number, data?: IAsn1Data, explicit?: boolean) {
-		super(ASN1_CLASS_APPLICATION_, !!data?.primitive_, tagNumber);
+		super(
+			ASN1_CLASS_APPLICATION_,
+			!explicit && !!data?.primitive_,
+			tagNumber,
+		);
 		this.data_ = data;
 		this.explicit_ = !!explicit;
 	}

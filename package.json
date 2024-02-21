@@ -1,6 +1,6 @@
 {
 	"name": "@exact-realty/asn1-der",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -49,5 +49,5 @@
 	},
 	"author": "Exact Realty Limited",
 	"license": "ISC",
-	"keywords": ["rfc8188", "aes128gcm"]
+	"keywords": ["asn1", "asn.1", "der"]
 }

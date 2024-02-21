@@ -16,10 +16,9 @@
 import { ASN1_CLASS_UNIVERSAL_ } from './Asn1ClassType.js';
 import { Asn1Primitive } from './Asn1Primitive.js';
 
-const textEncoder = new TextEncoder();
-
 export class Asn1Utf8String extends Asn1Primitive {
 	constructor(data: string) {
+		const textEncoder = new TextEncoder();
 		const encoded = textEncoder.encode(data);
 		super(ASN1_CLASS_UNIVERSAL_, 12, encoded);
 	}
