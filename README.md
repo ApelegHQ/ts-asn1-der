@@ -18,13 +18,13 @@
 To install the package, you can use npm or yarn:
 
 ```sh
-npm install @exact-realty/asn1-der
+npm install @apeleghq/asn1-der
 ```
 
 or
 
 ```sh
-yarn add @exact-realty/asn1-der
+yarn add @apeleghq/asn1-der
 ```
 
 ### 📚 Usage

@@ -1,6 +1,6 @@
 {
-	"name": "@exact-realty/asn1-der",
-	"version": "1.0.1",
+	"name": "@apeleghq/asn1-der",
+	"version": "1.0.2",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -18,20 +18,20 @@
 		}
 	},
 	"devDependencies": {
-		"@types/node": "^20.11.17",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"@typescript-eslint/parser": "^6.21.0",
-		"esbuild": "^0.20.0",
-		"eslint": "^8.56.0",
+		"@types/node": "^22.5.4",
+		"@typescript-eslint/eslint-plugin": "^8.5.0",
+		"@typescript-eslint/parser": "^8.5.0",
+		"esbuild": "^0.23.1",
+		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.1.3",
-		"prettier": "^3.2.5",
+		"eslint-plugin-prettier": "^5.2.1",
+		"prettier": "^3.3.3",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.3.3"
+		"typescript": "^5.6.2"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Exact-Realty/ts-asn1-der.git"
+		"url": "git+https://github.com/ApelegHQ/ts-asn1-der.git"
 	},
 	"files": [
 		"dist/**/*"
@@ -47,7 +47,7 @@
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags"
 	},
-	"author": "Exact Realty Limited",
+	"author": "Apeleg Limited",
 	"license": "ISC",
 	"keywords": ["asn1", "asn.1", "der"]
 }
