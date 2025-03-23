@@ -21,5 +21,6 @@ export interface IAsn1Data {
 	readonly tag_: number;
 
 	rawContents_(): AllowSharedBufferSource | null | undefined;
+	// eslint-disable-next-line @typescript-eslint/naming-convention
 	derEncode(): AllowSharedBufferSource;
 }

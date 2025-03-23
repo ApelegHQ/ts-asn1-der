@@ -34,6 +34,7 @@ export abstract class Asn1Base implements IAsn1Data {
 		throw new Error('Method not implemented.');
 	}
 
+	// eslint-disable-next-line @typescript-eslint/naming-convention
 	derEncode(): AllowSharedBufferSource {
 		if (!this.derEncoded__) {
 			const innerData = this.rawContents_();

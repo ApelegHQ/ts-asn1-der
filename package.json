@@ -1,10 +1,11 @@
 {
 	"name": "@apeleghq/asn1-der",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
-	"module": "./dist/index.mjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.cts",
 	"exports": {
 		".": {
 			"import": {
@@ -18,16 +19,19 @@
 		}
 	},
 	"devDependencies": {
-		"@types/node": "^22.5.4",
-		"@typescript-eslint/eslint-plugin": "^8.5.0",
-		"@typescript-eslint/parser": "^8.5.0",
-		"esbuild": "^0.23.1",
-		"eslint": "^8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.2.1",
-		"prettier": "^3.3.3",
+		"@eslint/eslintrc": "^3.3.1",
+		"@eslint/js": "^9.23.0",
+		"@types/node": "^22.13.11",
+		"@typescript-eslint/eslint-plugin": "^8.27.0",
+		"@typescript-eslint/parser": "^8.27.0",
+		"esbuild": "^0.25.1",
+		"eslint": "^9.23.0",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-prettier": "^5.2.3",
+		"globals": "^16.0.0",
+		"prettier": "^3.5.3",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.6.2"
+		"typescript": "^5.8.2"
 	},
 	"repository": {
 		"type": "git",
@@ -49,5 +53,9 @@
 	},
 	"author": "Apeleg Limited",
 	"license": "ISC",
-	"keywords": ["asn1", "asn.1", "der"]
+	"keywords": [
+		"asn1",
+		"asn.1",
+		"der"
+	]
 }

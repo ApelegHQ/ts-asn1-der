@@ -50,6 +50,7 @@ export class Asn1AnyRaw implements IAsn1Data {
 		return this.data_.subarray(this.dataStart_);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/naming-convention
 	derEncode() {
 		return this.data_;
 	}
