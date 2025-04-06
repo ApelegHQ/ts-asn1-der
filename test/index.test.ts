@@ -17,6 +17,8 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import * as asn1 from '../src/index.js';
 
+import '../src/lib/encode2sComplement.test.js';
+
 describe('DER Encoding', () => {
 	it('ASN.1 Sequence of NULLs', async function () {
 		assert.deepEqual(

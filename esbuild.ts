@@ -19,7 +19,7 @@ import esbuild from 'esbuild';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const buildOptionsBase = {
+const buildOptionsBase: esbuild.BuildOptions = {
 	entryPoints: ['./src/index.ts'],
 	target: 'es2018',
 	outdir: 'dist',
@@ -30,7 +30,7 @@ const buildOptionsBase = {
 	external: ['esbuild'],
 };
 
-const formats = ['cjs', 'esm'];
+const formats: esbuild.Format[] = ['cjs', 'esm'];
 
 await Promise.all(
 	formats.map((format) => {
@@ -44,7 +44,7 @@ await Promise.all(
 	}),
 );
 
-const cjsDeclarationFiles = async (directoryPath) => {
+const cjsDeclarationFiles = async (directoryPath: string) => {
 	const entries = await readdir(directoryPath, {
 		withFileTypes: true,
 		recursive: true,
@@ -56,7 +56,7 @@ const cjsDeclarationFiles = async (directoryPath) => {
 				return entry.isFile() && entry.name.endsWith('.d.ts');
 			})
 			.map(async (file) => {
-				const name = join(file.path, file.name);
+				const name = join(file.parentPath, file.name);
 				const newName = name.slice(0, -2) + 'cts';
 
 				const contents = await readFile(name, { encoding: 'utf-8' });
