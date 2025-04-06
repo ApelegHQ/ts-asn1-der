@@ -25,8 +25,10 @@ const BigIntBitLen = (x: bigint) => {
 const numBitLen = (x: number) => {
 	let l = 1;
 	if (x < 0) x = -x;
-	while (x >= 4294967296) {
-		x /= 2;
+	// values higher than 2**32 - 1 (requiring a fifth byte)
+	// need regular math.
+	while (x >>> 0 !== x) {
+		x = Math.floor(x / 2);
 		l++;
 	}
 	while ((x >>>= 1) != 0) {
@@ -48,14 +50,23 @@ function encode2sComplement(
 
 		return bytes.buffer;
 	} else if (typeof n === 'number') {
+		if (
+			!(n <= Number.MAX_SAFE_INTEGER) ||
+			!(n >= Number.MIN_SAFE_INTEGER)
+		) {
+			throw new RangeError('Value must be a safe integer');
+		}
 		const negative = n < 0;
 		const size = Math.ceil(numBitLen(negative ? -n : n * 2) / 8);
 		const bytes = new Uint8Array(size);
 		let i = size - 1;
-		for (; Math.abs(n) >= 2 ** 31 && i >= 0; i--, n = Math.floor(n / 256)) {
+		// values higher than 2**32 - 1 (requiring a fifth byte)
+		// need regular math.
+		for (; i >= 4; i--, n = Math.floor(n / 256)) {
 			bytes[i] = n & 0xff;
 		}
-		for (; i >= 0; i--, n >>= 8) {
+		// Lower bytes can be done with faster bit-wise operations
+		for (; i >= 0; i--, n >>>= 8) {
 			bytes[i] = n & 0xff;
 		}
 

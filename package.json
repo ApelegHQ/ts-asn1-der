@@ -1,6 +1,6 @@
 {
 	"name": "@apeleghq/asn1-der",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
