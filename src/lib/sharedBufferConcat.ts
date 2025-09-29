@@ -26,7 +26,10 @@ const sharedBufferConcat_ = (
 		result.set(octets, acc);
 		return acc + cv.byteLength;
 	}, 0);
-	return result.buffer;
+	return result.buffer.slice(
+		result.byteOffset,
+		result.byteOffset + result.byteLength,
+	);
 };
 
 export default sharedBufferConcat_;
